@@ -15,7 +15,7 @@ import lombok.ToString;
 import java.util.Collection;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 @Setter
 @Getter
 @NoArgsConstructor
