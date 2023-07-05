@@ -13,7 +13,7 @@ import java.util.List;
  * @author Yosef Adel Mahmoud Saaid
  */
 @RestController
-@RequestMapping("/courses")
+@RequestMapping("api/courses")
 @RequiredArgsConstructor
 public class CourseController {
 

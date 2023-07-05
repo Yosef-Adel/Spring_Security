@@ -42,12 +42,13 @@ public class SecurityConfig {
 
         http.authorizeHttpRequests(configurer ->
                 configurer
-                        .requestMatchers(HttpMethod.GET, "/api").hasRole("EMPLOYEE")
-                        .requestMatchers(HttpMethod.GET, "/api/manger").hasRole("MANAGER")
-                        .requestMatchers(HttpMethod.GET, "/api/admin").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/api/courses").hasRole("USER")
+                        .requestMatchers(HttpMethod.GET, "/api/courses/**").hasRole("USER")
+                        .requestMatchers(HttpMethod.POST, "/api/courses").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/api/courses/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/api/courses/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST, "/api/auth/**").permitAll()
-                        .anyRequest().permitAll()
-
+                        .requestMatchers("/error").permitAll()
         );
 
         // use HTTP Basic authentication
