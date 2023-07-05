@@ -2,10 +2,12 @@ package com.example.spring_security.service;
 
 import com.example.spring_security.dao.CouresDao;
 import com.example.spring_security.entity.Course;
+import com.example.spring_security.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 /*
  * @created 05/07/2023 - 6:25 PM
@@ -27,5 +29,13 @@ public class CourseService {
 
     public  Course updateCourse(Course course){
         return couresDao.updateCourse(course);
+    }
+
+    public Course getCourseByID(Long id){
+        return couresDao.getCourseByID(id).orElseThrow(()-> new ResourceNotFoundException("Course with id [%s] not found".formatted(id)));
+    }
+
+    public void deleteCourse(Long id){
+        couresDao.deleteCourse(id);
     }
 }
